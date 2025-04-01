@@ -39,13 +39,12 @@ return {
     },
     keymap = {
       preset = "super-tab",
-      -- preset = "super-tab",
-      -- ["<C-y>"] = { "select_and_accept" },
+      ["<C-y>"] = { "select_and_accept" },
     },
     completion = {
       list = {
         selection = {
-          -- preselect = false,
+          preselect = false,
           -- auto_insert = false,
         }
       },

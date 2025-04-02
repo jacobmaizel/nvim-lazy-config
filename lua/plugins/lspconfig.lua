@@ -3,6 +3,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      inlay_hints = { enabled = false },
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
       -- make sure mason installs the server
       servers = {
         yamlls = {
@@ -99,6 +105,7 @@ return {
       },
       setup = {
         gopls = function(_, opts)
+          
           -- workaround for gopls not supporting semanticTokensProvider
           -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
           LazyVim.lsp.on_attach(function(client, _)

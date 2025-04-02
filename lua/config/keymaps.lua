@@ -6,23 +6,18 @@
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
-vim.keymap.set('n', '<leader>ihe', function()
-  vim.lsp.inlay_hint.enable(true)
-end)
+vim.keymap.set("n", "<leader>iht", function()
+  -- vim.lsp.inlay_hint.enable(bufnr, true)
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, keymap_opts)
 
-vim.keymap.set('n', '<leader>ihd', function()
-  vim.lsp.inlay_hint.enable(false)
-end)
-
-
--- vim.keymap.del
+-- unset wierd line movements because escape + direction triggered it..its a bug
 vim.keymap.del("n", "<A-j>")
 vim.keymap.del("n", "<A-k>")
 vim.keymap.del("i", "<A-j>")
 vim.keymap.del("i", "<A-k>")
 vim.keymap.del("v", "<A-j>")
 vim.keymap.del("v", "<A-k>")
-
 
 vim.keymap.set("n", "<C-S-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
 vim.keymap.set("n", "<C-S-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })

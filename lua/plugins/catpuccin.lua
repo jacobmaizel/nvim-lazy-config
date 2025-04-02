@@ -2,6 +2,7 @@ return {
   {
     "catppuccin/nvim",
     lazy = true,
+    flavour = "mocha",
     name = "catppuccin",
     opts = {
       integrations = {
@@ -55,5 +56,5 @@ return {
         end,
       },
     },
-  }
+  },
 }

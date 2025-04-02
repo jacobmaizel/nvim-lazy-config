@@ -1,12 +1,17 @@
+-- ["<C-l>"] = "actions.refresh",
 return {
   "stevearc/oil.nvim",
-  -- keys = { { "n", "<leader>cs", "<CMD>Oil<CR>", desc = "open oil" } },
+  keys = {
+    { "<C-l>", mode = { "n" }, false },
+    { "<C-h>", mode = { "n" }, false },
+  },
   ---@module 'oil'
   ---@type oil.SetupOpts
   opts = {
     view_options = {
       show_hidden = true,
     },
+    default_file_explorer = false,
   },
   -- Optional dependencies
   dependencies = { { "echasnovski/mini.icons", opts = {} } },

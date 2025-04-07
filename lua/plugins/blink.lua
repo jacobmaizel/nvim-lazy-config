@@ -46,7 +46,7 @@ return {
         selection = {
           preselect = false,
           -- auto_insert = false,
-        }
+        },
       },
       accept = {
         -- experimental auto-brackets support
@@ -58,7 +58,7 @@ return {
         draw = {
           treesitter = { "lsp" },
           gap = 1,
-          columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } }
+          columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
         },
         border = "rounded",
         -- winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine: BlinkCmpMenuSelection,Search:None",
@@ -83,13 +83,43 @@ return {
       -- adding any nvim-cmp sources here will enable them
       -- with blink.compat
       compat = {},
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "path", "snippets", "buffer", "cmdline" },
     },
-
     cmdline = {
-      enabled = false,
+      enabled = true,
+      -- use 'inherit' to inherit mappings from top level `keymap` config
+      keymap = { preset = "cmdline" },
+      sources = function()
+        local type = vim.fn.getcmdtype()
+        -- Search forward and backward
+        if type == "/" or type == "?" then
+          return { "buffer" }
+        end
+        -- Commands
+        if type == ":" or type == "@" then
+          return { "cmdline" }
+        end
+        return {}
+      end,
+      completion = {
+        trigger = {
+          show_on_blocked_trigger_characters = {},
+          show_on_x_blocked_trigger_characters = {},
+        },
+        list = {
+          selection = {
+            -- When `true`, will automatically select the first item in the completion list
+            preselect = true,
+            -- When `true`, inserts the completion item automatically when selecting it
+            auto_insert = true,
+          },
+        },
+        -- Whether to automatically show the window when new completion items are available
+        menu = { auto_show = true },
+        -- Displays a preview of the selected item on the current line
+        ghost_text = { enabled = false },
+      },
     },
-
   },
   ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
   config = function(_, opts)

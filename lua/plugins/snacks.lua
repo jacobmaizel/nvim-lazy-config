@@ -20,6 +20,12 @@ return {
         timeout = 5000,
       },
       picker = {
+        formatters = {
+          file = {
+            filename_first = true,
+            truncate = 90,
+          },
+        },
         win = {
           input = {
             keys = {
@@ -77,7 +83,7 @@ return {
         function()
           Snacks.dashboard()
         end,
-        desc = "Smart Find Files",
+        desc = "Open Lazy Dashboard",
       },
       {
         "<leader>,",

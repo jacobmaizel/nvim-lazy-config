@@ -45,7 +45,7 @@ return {
       list = {
         selection = {
           preselect = false,
-          -- auto_insert = false,
+          auto_insert = true,
         },
       },
       accept = {

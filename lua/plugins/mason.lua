@@ -1,10 +1,10 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = { ensure_installed = { "delve", "goimports", "gofumpt", "gomodifytags", "impl", "gopls" } },
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = { ensure_installed = { "lua-language-server" } },
   },
 }
